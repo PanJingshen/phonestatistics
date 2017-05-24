@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.ustc.mapper.DeviceMapper">
+  <resultMap id="BaseResultMap" type="edu.ustc.model.Device">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="android_version" jdbcType="INTEGER" property="androidVersion" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="android_id" jdbcType="VARCHAR" property="androidId" />
+    <result column="cpu" jdbcType="VARCHAR" property="cpu" />
+    <result column="total_internal_memory" jdbcType="BIGINT" property="totalInternalMemory" />
+    <result column="avail_external_memory" jdbcType="BIGINT" property="availExternalMemory" />
+    <result column="total_external_memory" jdbcType="BIGINT" property="totalExternalMemory" />
+    <result column="display_metrics" jdbcType="VARCHAR" property="displayMetrics" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="manufacture" jdbcType="VARCHAR" property="manufacture" />
+    <result column="product" jdbcType="VARCHAR" property="product" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, model, version, android_version, imei, android_id, cpu, total_internal_memory, 
+    avail_external_memory, total_external_memory, display_metrics, brand, manufacture, 
+    product, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByAndroidId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device
+    where android_id = #{androidId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from device
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.ustc.model.Device">
+    insert into device (id, model, version, 
+      android_version, imei, android_id, 
+      cpu, total_internal_memory, avail_external_memory, 
+      total_external_memory, display_metrics, brand, 
+      manufacture, product, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{androidVersion,jdbcType=INTEGER}, #{imei,jdbcType=VARCHAR}, #{androidId,jdbcType=VARCHAR}, 
+      #{cpu,jdbcType=VARCHAR}, #{totalInternalMemory,jdbcType=BIGINT}, #{availExternalMemory,jdbcType=BIGINT}, 
+      #{totalExternalMemory,jdbcType=BIGINT}, #{displayMetrics,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{manufacture,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.ustc.model.Device">
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="androidVersion != null">
+        android_version,
+      </if>
+      <if test="imei != null">
+        imei,
+      </if>
+      <if test="androidId != null">
+        android_id,
+      </if>
+      <if test="cpu != null">
+        cpu,
+      </if>
+      <if test="totalInternalMemory != null">
+        total_internal_memory,
+      </if>
+      <if test="availExternalMemory != null">
+        avail_external_memory,
+      </if>
+      <if test="totalExternalMemory != null">
+        total_external_memory,
+      </if>
+      <if test="displayMetrics != null">
+        display_metrics,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="manufacture != null">
+        manufacture,
+      </if>
+      <if test="product != null">
+        product,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null">
+        #{androidVersion,jdbcType=INTEGER},
+      </if>
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="androidId != null">
+        #{androidId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="totalInternalMemory != null">
+        #{totalInternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="availExternalMemory != null">
+        #{availExternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="totalExternalMemory != null">
+        #{totalExternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="displayMetrics != null">
+        #{displayMetrics,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacture != null">
+        #{manufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null">
+        #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.ustc.model.Device">
+    update device
+    <set>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null">
+        android_version = #{androidVersion,jdbcType=INTEGER},
+      </if>
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="androidId != null">
+        android_id = #{androidId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        cpu = #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="totalInternalMemory != null">
+        total_internal_memory = #{totalInternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="availExternalMemory != null">
+        avail_external_memory = #{availExternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="totalExternalMemory != null">
+        total_external_memory = #{totalExternalMemory,jdbcType=BIGINT},
+      </if>
+      <if test="displayMetrics != null">
+        display_metrics = #{displayMetrics,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacture != null">
+        manufacture = #{manufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null">
+        product = #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.ustc.model.Device">
+    update device
+    set model = #{model,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      android_version = #{androidVersion,jdbcType=INTEGER},
+      imei = #{imei,jdbcType=VARCHAR},
+      android_id = #{androidId,jdbcType=VARCHAR},
+      cpu = #{cpu,jdbcType=VARCHAR},
+      total_internal_memory = #{totalInternalMemory,jdbcType=BIGINT},
+      avail_external_memory = #{availExternalMemory,jdbcType=BIGINT},
+      total_external_memory = #{totalExternalMemory,jdbcType=BIGINT},
+      display_metrics = #{displayMetrics,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      manufacture = #{manufacture,jdbcType=VARCHAR},
+      product = #{product,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

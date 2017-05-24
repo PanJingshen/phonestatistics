@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.ustc.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="edu.ustc.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, email, password
+  </sql>
+	<select id="getUsers"  resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" /> 
+		from User
+	</select> 
+	<select id="getUserByName" parameterType="string" resultMap="BaseResultMap">
+		select * from User where username= #{username}
+	</select>  
+  <insert id="insert" parameterType="edu.ustc.model.User" >
+    insert into user ( username, email, password
+      )
+    values ( #{username,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateById" parameterType="edu.ustc.model.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
