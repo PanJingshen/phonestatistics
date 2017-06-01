@@ -79,6 +79,9 @@ public class UserController {
 		String birthdate = request.getParameter("birthdate");
 		
 		User user = new User(id, username, email, password);
+		
+		System.out.println(TAG+user.toString());
+		
 		boolean isSuccess = userService.updateUser(user);
 		return "redirect:index";
 	}

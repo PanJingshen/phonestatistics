@@ -55,15 +55,14 @@ public class ManagerServiceImpl implements ManagerService{
 
 	@Override
 	public List<Manager> getManagers() {
-		// TODO Auto-generated method stub
-		return null;
+		return managerDao.getManagers();
 	}
 
 
 
 	@Override
 	public void addManager(Manager manager) {
-		// TODO Auto-generated method stub
+		managerDao.insert(manager);
 		
 	}
 
@@ -71,7 +70,7 @@ public class ManagerServiceImpl implements ManagerService{
 
 	@Override
 	public void updateManager(Manager manager) {
-		// TODO Auto-generated method stub
+		managerDao.updateByPrimaryKey(manager);
 		
 	}
 
@@ -79,17 +78,17 @@ public class ManagerServiceImpl implements ManagerService{
 
 	@Override
 	public void deleteManager(int id) {
-		// TODO Auto-generated method stub
+		managerDao.deleteByPrimaryKey(id);
 		
 	}
 
 
 
 	@Override
-	public void getManager(int id) {
-		// TODO Auto-generated method stub
-		
+	public Manager getManager(int id) {
+		return managerDao.selectByPrimaryKey(id);
 	}
+
 
 	
 

@@ -25,6 +25,11 @@
     avail_external_memory, total_external_memory, display_metrics, brand, manufacture, 
     product, user_id
   </sql>
+  <select id="getDevices"  resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" /> 
+		from Device
+	</select> 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

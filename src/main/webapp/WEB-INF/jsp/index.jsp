@@ -24,6 +24,28 @@
 		<div id="toolbar">
                     <div class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加用户</div>
                 </div>
+                <!--弹出删除用户警告窗口-->
+                <div class="modal fade" id="deleteUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    确定要删除该用户？删除后不可恢复！
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                <button type="button" class="btn btn-green btn-xs">保 存</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
@@ -51,6 +73,7 @@
 					</div>
 				</div>
 			</div>
+            
             <div class="col-*-12">
                 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
                    <div class="modal-dialog">
@@ -98,19 +121,22 @@
                             <div class="modal-body">
                                 <form method="post" role="form" name="updateUserForm" action="${pageContext.request.contextPath}/user/updateUser">
                                      <div class="form-group">
-                                        <label>ID：</label><input name="id" type="text"  readonly  unselectable="on" >
+                                        <label>ID：</label><input name="id" id="edit_id" type="text"  readonly  unselectable="on" >
                                     </div>
                                     <div class="form-group">
-                                        <label>用户名：</label><input type="text" class="form-control" name="username" value=""  placeholder="请输入用户名">
+                                        <label>用户名：</label><input type="text" class="form-control" id="edit_username" name="username" value=""  placeholder="请输入用户名">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email"  placeholder="请输入邮箱">
+                                    <label>邮箱：</label>
+                                        <input type="text" class="form-control" id="edit_email" name="email"   placeholder="请输入邮箱">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="password"  placeholder="请输入密码">
+                                    <label>密码：</label>
+                                        <input type="text" class="form-control" id="edit_password" name="password"  placeholder="请输入密码">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="birthdate" placeholder="请输入出生日期">
+                                    <label>出生日期：</label>
+                                        <input type="text" class="form-control" id="edit_birthdate" name="birthdate" placeholder="请输入出生日期">
                                     </div>
                                 </form>
                             </div>
@@ -161,21 +187,23 @@
 
 	function operateFormatter(value, row, index) {
             return [
-                         '<a class="edit" href="javascript:void(0)" title="编辑" data-toggle="modal" data-target="#updateModal">',
+                         '<a class="edit"  title="编辑" data-toggle="modal" data-target="#updateModal">',
             '<i class="glyphicon glyphicon-pencil"></i>',
             '</a>  ',
-            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<a class="remove" title="Remove" data-toggle="modal" data-target="#deleteUser">',
             '<i class="glyphicon glyphicon-remove"></i>',
             '</a>'
                     ].join('');
         }
 		
+		
 	window.operateEvents = {
         'click .edit': function (e, value, row, index) {
-			$('#id').val(row.id);  
-    		$('#username').val(row.username);  
-			$('#email').val(row.password);
-    		$('#password').val(row.password);
+			console.log(value, row, index);
+			$('#edit_id').val(row.id);  
+    		$('#edit_username').val(row.username);  
+			$('#edit_email').val(row.email);
+    		$('#edit_password').val(row.password);
 			
             $table.bootstrapTable('updateRow', {
                 index:index,
@@ -193,7 +221,6 @@
         }
     };
 </script>
-
 </body>
 
 </html>

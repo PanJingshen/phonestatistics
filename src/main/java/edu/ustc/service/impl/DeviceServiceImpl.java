@@ -1,5 +1,7 @@
 package edu.ustc.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,34 @@ public class DeviceServiceImpl implements DeviceService{
 	@Override
 	public int getDeviceId(String androidId) {
 		return deviceDao.selectByAndroidId(androidId).getId();
+	}
+
+	@Override
+	public List<Device> getDevices() {
+		
+		return deviceDao.getDevices();
+	}
+
+	@Override
+	public boolean updateDevice(Device device) {
+		if (deviceDao.updateByPrimaryKey(device) > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteDevice(int id) {
+		if (deviceDao.deleteByPrimaryKey(id) > 0) {
+			return true;
+		}
+		return false;
+	}
+
+
+	@Override
+	public Device getDevice(String androidId) {
+		
+		return deviceDao.selectByAndroidId(androidId);
 	}
 }

@@ -52,6 +52,13 @@ public class ManagerController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/manager_list")
+	private String managerList(Model model) {
+		System.out.println(TAG+"index");
+//		model.addAttribute("user", );
+		return "manager_list";
+	}
+	
 	/**
 	 * 添加管理员预处理
 	 * @param manager
@@ -66,13 +73,13 @@ public class ManagerController {
 	@RequestMapping(value="/addManager")
 	private String addManager(Manager manager) {
 		managerService.addManager(manager);
-		return "redirect:index";
+		return "redirect:manager_list";
 	}
 	
 	@RequestMapping(value="/getManager")
-	private String getManager(int id) {
-		managerService.getManager(id);
-		return "redirect:index";
+	private Manager getManager(int id) {
+		
+		return managerService.getManager(id);
 	}
 	
 	@RequestMapping(value="/getManagers")
@@ -84,13 +91,13 @@ public class ManagerController {
 	@RequestMapping(value="/updateManager")
 	private String updateManager(Manager manager) {
 		managerService.updateManager(manager);
-		return "redirect:index";
+		return "redirect:manager_list";
 	}
 	
 	@RequestMapping(value="/deleteManager")
 	private String deleteManager(int id) {
 		managerService.deleteManager(id);
-		return "redirect:index";
+		return "redirect:manager_list";
 	}
 	
 }

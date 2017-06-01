@@ -12,6 +12,11 @@
   <sql id="Base_Column_List">
     id, package_name, count, total_time_in_foreground, device_id, has_wake_lock
   </sql>
+  <select id="getUsageStats"  resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" /> 
+		from usage_stats
+	</select> 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

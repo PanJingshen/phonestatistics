@@ -19,4 +19,6 @@ public interface ManagerMapper {
     int updateByPrimaryKey(Manager record);
 
 	Manager selectByUsername(String username);
+
+	List<Manager> getManagers();
 }

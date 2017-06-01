@@ -19,4 +19,6 @@ public interface DeviceMapper {
     int updateByPrimaryKey(Device record);
 
     Device selectByAndroidId(String androidId);
+
+	List<Device> getDevices();
 }

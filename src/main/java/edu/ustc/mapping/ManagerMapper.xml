@@ -11,6 +11,11 @@
   <sql id="Base_Column_List">
     id, username, password, email, phone
   </sql>
+  <select id="getManagers"  resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" /> 
+		from manager
+	</select> 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

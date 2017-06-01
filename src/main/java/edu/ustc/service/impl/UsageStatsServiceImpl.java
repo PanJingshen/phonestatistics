@@ -27,4 +27,9 @@ public class UsageStatsServiceImpl implements UsageStatsService{
 		}
 		
 	}
+
+	@Override
+	public List<UsageStats> getUsageStats() {
+		return usageStatsDao.getUsageStats();
+	}
 }

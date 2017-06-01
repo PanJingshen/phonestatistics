@@ -13,5 +13,5 @@ public interface ManagerService {
 	public void addManager(Manager manager);
 	public void updateManager(Manager manager);
 	public void deleteManager(int id);
-	public void getManager(int id);
+	public Manager getManager(int id);
 }

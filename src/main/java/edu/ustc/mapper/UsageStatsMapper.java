@@ -17,4 +17,6 @@ public interface UsageStatsMapper {
     int updateByPrimaryKeySelective(UsageStats record);
 
     int updateByPrimaryKey(UsageStats record);
+
+	List<UsageStats> getUsageStats();
 }
