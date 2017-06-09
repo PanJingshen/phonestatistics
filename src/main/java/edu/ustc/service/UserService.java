@@ -13,4 +13,6 @@ public interface UserService {
 	public List<User> getUsers();
 	public boolean deleteUser(int id);
 	public boolean updateUser(User user);
+	public List<User> getUsers(String username);
+	public User getUserById(int id);
 }

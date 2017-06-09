@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.faces.view.facelets.Tag;
+import javax.persistence.Id;
 import javax.servlet.http.HttpServletRequest;
 
 import org.omg.IOP.TAG_ALTERNATE_IIOP_ADDRESS;
@@ -65,7 +66,15 @@ public class UserController {
 	private List<User> getUsers(HttpServletRequest request, Model model){
 		System.out.println(TAG+"getUsers");
 		List<User> uList = userService.getUsers();
-		model.addAttribute("users", uList);
+		return uList;
+	}
+	
+	
+	@RequestMapping(value="/getUsersByUsername", method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	private List<User> getUsers(String username){
+		System.out.println(TAG+"getUsers");
+		List<User> uList = userService.getUsers(username);
 		return uList;
 	}
 	
@@ -136,6 +145,20 @@ public class UserController {
 	private HashMap<String, Object> client_getUser(HttpServletRequest request, Model model){
 		String username = request.getParameter("username");
 		User user = userService.getUser(username);
+		HashMap<String, Object> map_user = new HashMap<>();
+		map_user.put("id", user.getId());
+		map_user.put("username", user.getUsername());
+		map_user.put("email", user.getEmail());
+		map_user.put("password", user.getPassword());
+		System.out.println(map_user.toString());
+		return map_user;
+	}
+	
+	@RequestMapping(value="client/getUserById", method = RequestMethod.POST)
+	@ResponseBody
+	private HashMap<String, Object> client_getUserById(HttpServletRequest request, Model model){
+		int id = Integer.parseInt(request.getParameter("id"));
+		User user = userService.getUserById(id);
 		HashMap<String, Object> map_user = new HashMap<>();
 		map_user.put("id", user.getId());
 		map_user.put("username", user.getUsername());

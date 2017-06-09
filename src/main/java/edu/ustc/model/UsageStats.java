@@ -13,6 +13,10 @@ public class UsageStats {
 
     private Boolean hasWakeLock;
 
+    private Integer type;
+
+    private Boolean isSysApp;
+
     public Integer getId() {
         return id;
     }
@@ -61,10 +65,27 @@ public class UsageStats {
         this.hasWakeLock = hasWakeLock;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Boolean getIsSysApp() {
+        return isSysApp;
+    }
+
+    public void setIsSysApp(Boolean isSysApp) {
+        this.isSysApp = isSysApp;
+    }
+
 	@Override
 	public String toString() {
 		return "UsageStats [id=" + id + ", packageName=" + packageName + ", count=" + count + ", totalTimeInForeground="
-				+ totalTimeInForeground + ", deviceId=" + deviceId + ", hasWakeLock=" + hasWakeLock + "]";
+				+ totalTimeInForeground + ", deviceId=" + deviceId + ", hasWakeLock=" + hasWakeLock + ", type=" + type
+				+ ", isSysApp=" + isSysApp + "]";
 	}
     
     

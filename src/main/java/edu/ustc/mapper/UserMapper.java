@@ -15,4 +15,8 @@ public interface UserMapper {
 	public void deleteById(int id);
 
 	public void updateById(User user);
+
+	public List<User> getUsersByName(String username);
+
+	public User getUserById(int id);
 }

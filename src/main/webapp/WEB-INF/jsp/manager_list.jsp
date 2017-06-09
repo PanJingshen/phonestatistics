@@ -27,8 +27,9 @@
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li class="active">Tables</li>
+				<li><a href="${pageContext.request.contextPath}/nav/index"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li>账号管理</li>
+				<li class="active">管理员管理</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -40,10 +41,11 @@
 						<table id="talbe" data-toggle="table" data-url="${pageContext.request.contextPath}/manager/getManagers"  data-show-refresh="true" data-show-toggle="false" data-toolbar="#toolbar" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="id" data-sortable="true">Item ID</th>
+						        <th data-field="id" data-sortable="true">ID</th>
 						        <th data-field="username"  data-sortable="true">用户名</th>
 						        <th data-field="email" data-sortable="true">邮箱</th>
                                 <th data-field="password" data-sortable="true">密码</th>
+                                <th data-field="phone" data-sortable="true">电话</th>
                                 <th data-formatter="operateFormatter" data-events="operateEvents">操作</th>
 						    </tr>
 						    </thead>
@@ -73,7 +75,7 @@
                                         <input type="text" class="form-control" name="password"  placeholder="请输入密码">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="birthdate" placeholder="请输入出生日期">
+                                        <input type="text" class="form-control" name="phone"  placeholder="请输入电话号码">
                                     </div>
                                 </form>
                             </div>
@@ -110,6 +112,10 @@
                                     <div class="form-group">
                                     <label>密码：</label>
                                         <input type="text" class="form-control" id="edit_password" name="password"  placeholder="请输入密码">
+                                    </div>
+                                    <div class="form-group">
+                                    <label>电话：</label>
+                                        <input type="text" class="form-control" id="edit_phone" name="phone"  placeholder="请输入电话号码">
                                     </div>
                                 </form>
                             </div>
@@ -177,7 +183,7 @@
     		$('#edit_username').val(row.username);  
 			$('#edit_email').val(row.email);
     		$('#edit_password').val(row.password);
-			
+			$('#edit_phone').val(row.phone);
             $table.bootstrapTable('updateRow', {
                 index:index,
                 row:row

@@ -47,13 +47,13 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="edu.ustc.model.Device">
-    insert into device (id, model, version, 
+    insert into device (model, version, 
       android_version, imei, android_id, 
       cpu, total_internal_memory, avail_external_memory, 
       total_external_memory, display_metrics, brand, 
       manufacture, product, user_id
       )
-    values (#{id,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+    values ( #{model,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
       #{androidVersion,jdbcType=INTEGER}, #{imei,jdbcType=VARCHAR}, #{androidId,jdbcType=VARCHAR}, 
       #{cpu,jdbcType=VARCHAR}, #{totalInternalMemory,jdbcType=BIGINT}, #{availExternalMemory,jdbcType=BIGINT}, 
       #{totalExternalMemory,jdbcType=BIGINT}, #{displayMetrics,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 

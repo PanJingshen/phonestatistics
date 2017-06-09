@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 
 import edu.ustc.model.UsageStats;
 import edu.ustc.service.UsageStatsService;
+import util.NetUtil;
 
 @Controller
 @RequestMapping("/usage_stats")
@@ -39,6 +40,7 @@ public class UsageStatsController {
 		List<UsageStats> uList = gson.fromJson(json, type);
 		System.out.println(TAG+uList.toString());
 		usageStatsService.upload(uList);
+		
 	
 	}
 	

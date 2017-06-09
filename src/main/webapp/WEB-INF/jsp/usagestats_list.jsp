@@ -21,17 +21,10 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="navigator.jsp" /><!--/.sidebar-->
-    <div id="toolbar">
-            <select class="form-control">
-                <option value="">Export Basic</option>
-                <option value="all">Export All</option>
-                <option value="selected">Export Selected</option>
-            </select>
-        </div>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="${pageContext.request.contextPath}/nav/index"><span class="glyphicon glyphicon-home"></span></a></li>
 				<li>数据管理</li>
                 <li class="active">应用管理</li>
 			</ol>
@@ -42,7 +35,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Android应用使用状态列表</div>
 					<div class="panel-body">
-						<table id="table" data-toggle="table" data-url="${pageContext.request.contextPath}/usage_stats/getUsageStats" data-toolbar="#toolbar" data-show-export="true" data-click-to-select="true" data-show-refresh="true" data-show-toggle="false" sdata-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table id="table" data-toggle="table" data-url="${pageContext.request.contextPath}/usage_stats/getUsageStats"  data-show-export="true" data-click-to-select="true" data-show-refresh="true" data-show-toggle="false" sdata-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
 						        <th data-field="id" data-sortable="true">Item ID</th>
@@ -50,7 +43,7 @@
 						        <th data-field="count" data-sortable="true">点击次数</th>
                                 <th data-field="totalTimeInForeground" data-sortable="true">前台总运行时间</th>
                                 <th data-field="deviceId" data-sortable="true">设备ID</th>
-                                <th data-field="hasWakeLock" data-sortable="true">是否有唤醒锁</th>
+                                <th data-field="type" >类型</th>
 						    </tr>
 						    </thead>
 						</table>

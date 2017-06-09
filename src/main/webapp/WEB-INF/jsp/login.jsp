@@ -9,7 +9,7 @@ function login(){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Forms</title>
+<title>Android用户行为分析</title>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/datepicker3.css" rel="stylesheet">
@@ -27,23 +27,17 @@ function login(){
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Log in</div>
+				<div class="panel-heading">管理员登录</div>
 				<div class="panel-body">
 					<form role="form" name="loginForm" action="${pageContext.request.contextPath}/manager/doLogin">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" name="username"  type="text" autofocus>
+								<input class="form-control" name="username"  type="text" autofocus placeholder="请输入用户名">
 							</div>
 							<div class="form-group">
-								<input class="form-control" name="password" type="password" value="">
+								<input class="form-control" name="password" type="password" value="" placeholder="请输入密码">
 							</div>
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me">Remember Me
-								</label>
-							</div>
-                            
-							<a class="btn btn-primary" onClick="login();">Login</a>
+							<a class="btn btn-primary" onClick="login();">登录</a>
 						</fieldset>
 					</form>
 				</div>

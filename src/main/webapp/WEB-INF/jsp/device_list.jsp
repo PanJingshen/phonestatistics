@@ -35,7 +35,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">设备列表</div>
 					<div class="panel-body">
-						<table id="talbe" data-toggle="table" data-url="${pageContext.request.contextPath}/device/getDevices"  data-show-refresh="true" data-show-toggle="false" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table id="table" data-toggle="table" data-url="${pageContext.request.contextPath}/device/getDevices"  data-show-refresh="true" data-show-toggle="false" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
 						        <th data-field="id" data-sortable="true">ID</th>

@@ -34,7 +34,7 @@
 						</a>
 					</li>
 					<li>
-						<a class="" href="#">
+						<a class="" href="${pageContext.request.contextPath}/nav/data_result">
 							<span class="glyphicon glyphicon-share-alt"></span> 数据分析
 						</a>
 					</li>
@@ -42,7 +42,7 @@
 			</li>
 			<li role="presentation" class="divider"></li>
 		</ul>
-		<div class="attribution">Template by <a href="http://www.medialoot.com/item/lumino-admin-bootstrap-template/">Medialoot</a></div>
+		<div class="attribution">Copyright @<a href="">PhoneStatistics</a></div>
 	</div><!--/.sidebar-->
 		
 	

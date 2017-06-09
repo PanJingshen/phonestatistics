@@ -33,8 +33,9 @@ public class ManagerController {
 	
 	
 	@RequestMapping(value="/doLogin")
-	private String doLogin(String username, String password) {
+	private String doLogin(String username, String password, Model model) {
 		if (managerService.isLogin(username, password)) {
+			model.addAttribute("manager", managerService.getManager(username));
 			return "redirect:index";
 		}
 		return "redirect:login";

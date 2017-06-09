@@ -15,8 +15,17 @@
 		<include refid="Base_Column_List" /> 
 		from User
 	</select> 
-	<select id="getUserByName" parameterType="string" resultMap="BaseResultMap">
+	<select id="getUsersByName"  resultMap="BaseResultMap" parameterType="java.lang.String">
+		select 
+		<include refid="Base_Column_List" /> 
+		from User
+		where username like CONCAT(CONCAT('%', #{username,jdbcType=VARCHAR}), '%')
+	</select> 
+	<select id="getUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
 		select * from User where username= #{username}
+	</select>  
+	<select id="getUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from User where id= #{id}
 	</select>  
   <insert id="insert" parameterType="edu.ustc.model.User" >
     insert into user ( username, email, password

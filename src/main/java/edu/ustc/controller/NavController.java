@@ -61,4 +61,9 @@ public class NavController {
 		return "device_list";
 	}
 	
+	@RequestMapping(value="/data_result", method = {RequestMethod.POST, RequestMethod.GET})
+	private String navDataResult(HttpServletRequest request, Model model){
+		return "data_result";
+	}
+	
 }

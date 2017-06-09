@@ -8,14 +8,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Android用户行为分析</span>后台</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> ${sessionScope.get('manager').username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-							<li><a href="${pageContext.request.contextPath}/nav/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span> 个人页面</a></li>
+							<li><a href="${pageContext.request.contextPath}/nav/login"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
 						</ul>
 					</li>
 				</ul>

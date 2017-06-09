@@ -37,7 +37,7 @@ public class DeviceController {
 	@ResponseBody
 	private int upload(HttpServletRequest request, Model model){
 		String json = request.getParameter("device");
-		System.out.println(TAG+json);
+//		System.out.println(TAG+json);
 		Gson gson = new Gson();
 		Device device = gson.fromJson(json, Device.class);
 		System.out.println(TAG+device.toString());
@@ -60,6 +60,14 @@ public class DeviceController {
 		System.out.println(TAG+"getDevices");
 		List<Device> dList = deviceService.getDevices();
 		model.addAttribute("device", dList);
+		return dList;
+	}
+	
+	@RequestMapping(value="/getDevicesByUserId", method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	private List<Device> getDevices(int userId){
+		System.out.println(TAG+"getDevices");
+		List<Device> dList = deviceService.getDevices();
 		return dList;
 	}
 	

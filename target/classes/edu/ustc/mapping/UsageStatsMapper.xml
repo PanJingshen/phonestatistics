@@ -8,9 +8,11 @@
     <result column="total_time_in_foreground" jdbcType="BIGINT" property="totalTimeInForeground" />
     <result column="device_id" jdbcType="INTEGER" property="deviceId" />
     <result column="has_wake_lock" jdbcType="BIT" property="hasWakeLock" />
+     <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="is_sys_app" jdbcType="BIT" property="isSysApp" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, package_name, count, total_time_in_foreground, device_id, has_wake_lock
+		id, package_name, count, total_time_in_foreground, device_id, has_wake_lock, type, is_sys_app
   </sql>
   <select id="getUsageStats"  resultMap="BaseResultMap">
 		select 
@@ -28,12 +30,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="edu.ustc.model.UsageStats">
-    insert into usage_stats (id, package_name, count, 
-      total_time_in_foreground, device_id, has_wake_lock
-      )
+   insert into usage_stats (id, package_name, count, 
+      total_time_in_foreground, device_id, has_wake_lock, 
+      type, is_sys_app)
     values (#{id,jdbcType=INTEGER}, #{packageName,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
-      #{totalTimeInForeground,jdbcType=BIGINT}, #{deviceId,jdbcType=INTEGER}, #{hasWakeLock,jdbcType=BIT}
-      )
+      #{totalTimeInForeground,jdbcType=BIGINT}, #{deviceId,jdbcType=INTEGER}, #{hasWakeLock,jdbcType=BIT}, 
+      #{type,jdbcType=INTEGER}, #{isSysApp,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="edu.ustc.model.UsageStats">
     insert into usage_stats
@@ -56,6 +58,12 @@
       <if test="hasWakeLock != null">
         has_wake_lock,
       </if>
+        <if test="type != null">
+        type,
+      </if>
+      <if test="isSysApp != null">
+        is_sys_app,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -75,6 +83,12 @@
       </if>
       <if test="hasWakeLock != null">
         #{hasWakeLock,jdbcType=BIT},
+      </if>
+     <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isSysApp != null">
+        #{isSysApp,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -96,6 +110,12 @@
       <if test="hasWakeLock != null">
         has_wake_lock = #{hasWakeLock,jdbcType=BIT},
       </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isSysApp != null">
+        is_sys_app = #{isSysApp,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -105,7 +125,9 @@
       count = #{count,jdbcType=INTEGER},
       total_time_in_foreground = #{totalTimeInForeground,jdbcType=BIGINT},
       device_id = #{deviceId,jdbcType=INTEGER},
-      has_wake_lock = #{hasWakeLock,jdbcType=BIT}
+      has_wake_lock = #{hasWakeLock,jdbcType=BIT},
+      type = #{type,jdbcType=INTEGER},
+      is_sys_app = #{isSysApp,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

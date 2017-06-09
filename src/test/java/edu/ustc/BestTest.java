@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import edu.ustc.mapper.DataResultMapper;
 import edu.ustc.mapper.UserMapper;
+import edu.ustc.model.DataResultWithBLOBs;
 import edu.ustc.model.User;
 
 
@@ -19,6 +21,9 @@ public class BestTest {
 	@Autowired
 	private UserMapper userMapper;
 	
+	@Autowired
+	private DataResultMapper dataResultMapper;
+	
 //	@Test
 //	public void testGetUsers() {
 //		
@@ -27,18 +32,28 @@ public class BestTest {
 //		System.out.println(uList.toString());
 //	}
 	
-	@Test
-	public void testDeleteUser() {
-		
-		userMapper.deleteById(5);
-	}
 //	@Test
-//	public void testGetUserByName() {
-//		String username="123";
-//		User user = userMapper.getUserByName(username);
+//	public void testDeleteUser() {
 //		
-//		System.out.println(user.toString());
+//		userMapper.deleteById(5);
 //	}
+	
+//	@Test
+//	public void testgetDataResult() {
+//		
+//		DataResultWithBLOBs dataResultWithBLOBs = dataResultMapper.selectByDeviceId(5);
+//		
+//		System.out.println(dataResultWithBLOBs);
+//	}
+//	
+	
+	@Test
+	public void testGetUsersByName() {
+		String username="1";
+		List<User> userList = userMapper.getUsersByName(username);
+		
+		System.out.println("test:"+userList.toString());
+	}
 	
 //	@Test
 //	public void testAddUser() {

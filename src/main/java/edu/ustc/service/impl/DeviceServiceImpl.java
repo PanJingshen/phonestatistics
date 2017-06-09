@@ -18,7 +18,7 @@ public class DeviceServiceImpl implements DeviceService{
 	@Override
 	public void upload(Device device) {
 		// 如果没有上传过，那么上传设备信息
-		if(deviceDao.selectByAndroidId(device.getAndroidId()).equals(0))
+		if(deviceDao.selectByAndroidId(device.getAndroidId())==null)
 			deviceDao.insert(device);
 		
 	}

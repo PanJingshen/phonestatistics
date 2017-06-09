@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 import edu.ustc.mapper.UserMapper;
 import edu.ustc.model.User;
 import edu.ustc.service.UserService;
@@ -71,6 +69,20 @@ public class UserServiceImpl implements UserService{
 	public boolean updateUser(User user) {
 		userDao.updateById(user);
 		return false;
+	}
+
+
+
+	@Override
+	public List<User> getUsers(String username) {
+		return userDao.getUsersByName(username);
+	}
+
+
+
+	@Override
+	public User getUserById(int id) {
+		return userDao.getUserById(id);
 	}
 
 	
